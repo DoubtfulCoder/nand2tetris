@@ -1,0 +1,62 @@
+/** Represents chess board with pieces */
+class Board {
+	field Array board;
+
+	constructor Board new(Array board_arr) {
+		var int i; // Iteration for looping through array
+		let board = Array.new(64);
+
+		let i = 0;
+		while (i < 64) {
+			let board[i] = board_arr[i];
+		}
+		return this;
+	}
+
+	method void dispose() {
+		do board.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+
+	function Array default() {
+		// Creates a default chess position
+		var int i; // Value for loop for drawing pawns
+		var Array board_arr; 
+
+		let board_arr = Array.new(64); // index 0 is a1 square; index 63 is h8 square
+		let board_arr[0] = "0r" // White rook on a1
+		let board_arr[1] = "0n" // White knight on a2
+		let board_arr[2] = "0b" // White bishop on a3
+		let board_arr[3] = "0q" // White queen on a4
+		let board_arr[4] = "0k" // White king on a5
+		let board_arr[5] = "0b" // White bishop on a6
+		let board_arr[6] = "0n" // White knight on a7
+		let board_arr[7] = "0r" // White rook on a8
+
+		let i = 8;
+		while (i < 16) {
+			// Puts white pawns on b1-b8
+			board_arr[i] = "0p"
+			let i = i + 1;
+		}
+
+		let Array[48] = "1r" // Black rook on g1
+		let Array[49] = "1n" // Black knight on g2
+		let Array[50] = "1b" // Black bishop on g3
+		let Array[51] = "1q" // Black queen on g4
+		let Array[52] = "1k" // Black king on g5
+		let Array[53] = "1b" // Black bishop on g6
+		let Array[54] = "1n" // Black knight on g7
+		let Array[55] = "1r" // Black rook on g8
+
+		let i = 56;
+		while (i < 64) {
+			// Puts black pawns on h1-h8
+			board_arr[i] = "1p"
+			let i = i + 1;
+		}
+
+		return board_arr;
+	}
+}

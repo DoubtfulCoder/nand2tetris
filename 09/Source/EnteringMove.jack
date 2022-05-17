@@ -1,0 +1,43 @@
+/** Prompts user for move on screen and checks if it is in valid format */
+class EnteringMove {
+	function void main() {
+		var String move;
+		let move = "xxx"; // Setting to a random value so valid can run
+		while (~(EnteringMove.valid_move(move))) {
+			let move = Keyboard.readLine("What is your move? ");
+		}
+		return;
+	}
+
+	function boolean valid_move(String move) {
+		var char first_char;
+		let first_char = move.charAt(0);
+
+		//if (first_char = 75 | first_char = 81 | first_char = 82 | first_char = 66 | first_char = 78) {
+		//if (move.length() = 4) {
+//
+		//} 
+		//else if (move.length() = 5) {
+		//	
+		//}
+		//else {
+		//	return false;
+		//}
+		if (first_char = 107 | first_char = 113 | first_char = 114 | first_char = 98 | first_char = 110) {
+			/* Checks if person is moving piece other than pawn (k, q, r, b, n) */
+			//do Output.printChar(first_char);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	//function boolean valid_square(String square) {
+	//	/* Takes in a square such as "e7" and sees if it is on board */
+	//	if ()
+	//	el
+	//}
+}
+
+// Implement length of moves later

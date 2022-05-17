@@ -1,0 +1,145 @@
+/**
+ * Implements Tetris game
+*/
+class TetrisGame {
+	field Array grid;
+	field int score;
+	field Piece currentPiece;
+	static Array pieces;
+
+	/** Creates a new Tetris game */
+	constructor TetrisGame new() {
+		var int i;
+		var Array x;
+		// let grid = Array.new(200); // 10 x 20 grid
+		let grid = Array.new(20); // 20 rows
+		// Creates 10 x 20 grid
+		while (i < 20) {
+			let grid[i] = Array.new(10);
+			let i = i + 1;
+		}
+
+		// let x = grid[10];
+		// let x[0] = 15;
+		// do Output.printInt(x[0]);
+
+		do TetrisGame.createPieces();
+
+		return this;
+	}
+
+	/** Disposes game memory */
+	method void dispose() {
+		do Memory.deAlloc(this);
+		return;
+	}
+
+	/** Runs tetris game */
+	method void run() {
+		var int noKeyPressedCounter;
+		var int key;
+
+		do TetrisGame.initialDraw();
+
+		let noKeyPressedCounter = 0;
+		// Waits for key to be pressed and continously counts up
+		// Pseudo-random number generator for choosing piece and position
+		while (Keyboard.keyPressed() = 0) {
+			let noKeyPressedCounter = noKeyPressedCounter + 1;
+		}
+
+		// Chooses seed using modulo 5
+		let currentPiece = pieces[noKeyPressedCounter - 
+								 (5 * (noKeyPressedCounter / 5))];
+
+		// do currentPiece.printRows();
+
+		// while (true) {
+		// 	let key = Keyboard.readChar();
+		// 	if (key = 130) {
+		// 		// Left arrow pressed: moves piece left
+		// 		do currentPiece.moveLeft();
+		// 	}
+		// 	if (key = 132) {
+		// 		// Right arrow pressed: moves piece right
+		// 		do currentPiece.moveRight();	
+		// 	} 
+		// 	if (key = 131) {
+		// 		// Up arrow pressed: rotates piece 90 deg
+		// 		do currentPiece.moveRotate();	
+		// 	} 
+		// 	if (key = 133) {
+		// 		// Down arrow pressed: drops piece
+		// 		do currentPiece.drop();
+		// 	}
+		// 	do Sys.wait(100); // Waits before next iteration
+		// }
+
+		return;
+	}
+
+	function void createPieces() {
+		// Creates Tetris pieces
+		let pieces = Array.new(5);
+
+		// 2 by 2 square piece
+		let pieces[0] = Piece.new(768, 768, 0, 0);
+
+		// 1 by 4 straight line piece
+		let pieces[1] = Piece.new(960, 0, 0, 0);
+
+		// L piece
+		let pieces[2] = Piece.new(512, 512, 768, 0);
+
+		// T piece
+		let pieces[3] = Piece.new(896, 256, 0, 0);
+
+		// Backwards z piece
+		let pieces[4] = Piece.new(384, 768, 0, 0);
+
+		return;
+	}
+
+	/** Draws initial screen */ 
+	function void initialDraw() {
+		var int x1, y1, x2, y2;
+		var int i;
+
+		do Output.printString("Welcome to Tetris!");
+		do Output.println();
+		do Output.printString("Press any key");
+		do Output.println();
+		do Output.printString("to get started");
+		do Output.println();
+		// do Output.printString("Use the left and right arrows to move");
+		// do Output.println();
+		// do Output.printString("Use the down arrow to drop and up arrow to rotate");
+		// do Output.println();
+
+		let x1 = 196;
+		let y1 = 5;
+		let y2 = 245;
+		while (~(x1 = 328)) {
+			// Draws vertical lines
+			do Screen.drawLine(x1, y1, x1, y2);
+			let x1 = x1 + 12;
+		}
+
+		let x1 = 196;
+		let x2 = 316;
+		let y1 = 5;
+		while (~(y1 = 257)) {
+			do Screen.drawLine(x1, y1, x2, y1);
+			let y1 = y1 + 12;
+		}
+
+		// do Screen.drawRectangle(40, 40, 240, 240);
+		// do Screen.drawRectangle(196, 5, 316, 245);
+		return;
+	}
+
+	// Scoring system:
+	// Line clear: +10
+	// Soft drop:  +0
+	// Hard drop:  +distance dropped
+}

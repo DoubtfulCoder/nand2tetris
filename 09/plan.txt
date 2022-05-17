@@ -1,0 +1,23 @@
+- Create square board on screen
+- Create pieces that are on a square on the board
+- Person enters move onto keyboard
+- Move is checked for legal/illegal
+	- Right color piece moved
+	- If was in check, they got out
+- Piece is moved on screen to new square
+- Checking for check
+	- Each piece has squares they are "attacking" at all times
+		- If one of those is king, then it is a check
+- Checking for checkmate
+	- If king in check
+		- Calculate all potential legal moves
+			- If none escape check, then checkmate
+- 50 move rule
+	- Last time piece was captured is stored somewhere
+		- If time = 50, draw
+- 3-time repitition
+	- Diffucult: Would require a way of storing a position...PGNs?
+- Checking for stalemate
+	- No check and no possible moves left
+- Situations of draw
+	- King and bishop, King and knight

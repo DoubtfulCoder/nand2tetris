@@ -1,0 +1,237 @@
+function Piece.init 2
+push constant 11
+call Array.new 1
+pop static 0
+push constant 1
+pop local 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push constant 11
+lt
+not
+if-goto WHILE_END0
+push local 1
+push static 0
+add
+push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 2
+call Math.multiply 2
+pop local 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Piece.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push constant 4
+call Array.new 1
+pop this 0
+push constant 0
+push this 0
+add
+push argument 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 0
+add
+push argument 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 0
+add
+push argument 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 0
+add
+push argument 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push pointer 0
+return
+function Piece.moveLeft 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+call Piece.shift 2
+pop temp 0
+push constant 0
+return
+function Piece.moveRight 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+not
+call Piece.shift 2
+pop temp 0
+push constant 0
+return
+function Piece.shift 1
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push local 0
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push argument 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push this 0
+add
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto IF_END0
+label IF_FALSE0
+push local 0
+push this 0
+add
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.divide 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_END0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Piece.draw 1
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push local 0
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push constant 10
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+call Piece.drawRow 2
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Piece.drawRow 2
+push argument 1
+pop local 0
+push argument 0
+pop argument 0
+label WHILE_EXP0
+push local 0
+push argument 0
+push static 0
+add
+pop pointer 1
+push that 0
+lt
+not
+if-goto WHILE_END0
+push argument 0
+push constant 1
+sub
+pop argument 0
+goto WHILE_EXP0
+label WHILE_END0
+push argument 1
+push argument 0
+push static 0
+add
+pop pointer 1
+push that 0
+sub
+pop argument 1
+push constant 2
+call String.new 1
+push constant 121
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push argument 1
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+push argument 1
+call Piece.drawRow 2
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Piece.printRows 1
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push local 0
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

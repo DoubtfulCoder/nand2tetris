@@ -1,0 +1,13 @@
+/**
+ * Main class of Tetris game
+ */
+class Main {
+	/** Creates and runs Tetris game */
+	function void main() {
+		var TetrisGame game;
+		let game = TetrisGame.new();
+		do game.run();
+		do game.dispose();
+		return;
+	}
+}

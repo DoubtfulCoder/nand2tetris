@@ -1,0 +1,108 @@
+/**
+ * Represents a Tetris piece
+*/
+class Piece {
+	field Array rows;
+	static Array twoToThe;
+	
+	/* Initiliazes twoToThe list with values from 2^0 to 2^10 */
+	function void init() {
+		var int twoCounter;
+		var int i;
+		let twoToThe = Array.new(11);
+        let twoCounter = 1;
+        let i = 0;
+
+		while (i < 11) {
+			let twoToThe[i] = twoCounter;
+			let twoCounter = twoCounter * 2;
+			let i = i + 1;
+		}
+
+		return;
+	}
+
+	/** Creates a new Tetris Piece */
+	constructor Piece new(int row1, int row2, int row3, int row4) {
+		let rows = Array.new(4);
+		let rows[0] = row1;
+		let rows[1] = row2;
+		let rows[2] = row3;
+		let rows[3] = row4;
+		return this;
+	}
+
+	method void moveLeft() {
+		do shift(false);
+		return;
+	}
+
+	method void moveRight() {
+		do shift(true);
+		return;
+	}
+
+	method void shift(boolean direction) {
+		var int i;
+		while (i < 4) {
+			if (direction) {
+				let rows[i] = rows[i] * 2; // shifts left
+			} else {
+				let rows[i] = rows[i] / 2; // shifts right
+			}
+		}
+		return;
+		// for row in rows: 
+		//   if direction = left:
+		//     let row = row + row
+		//   if direction = right:
+		//     let row = row / 2
+		// 01101000 -> 00110100
+	}
+
+	/** Draws piece to screen */
+	method void draw() {
+		var int rowIter;
+		// var int i;
+		// var int twoToThe[i];
+
+		// Loops through rows and draws rows
+		while (rowIter < 4) {
+			do Piece.drawRow(10, rows[rowIter]);
+		}
+		return;
+	}
+
+	/** Draws one row of piece */
+	function void drawRow(int i, int val) {
+		var int row;
+		var int i;
+		let row = val;
+		let i = i;
+
+		// Keeps looping until it finds a pixel that is filled
+		while (row < twoToThe[i]) {
+			let i = i - 1;
+		}
+
+		let val = val - twoToThe[i];
+		do Output.printString("yo");
+
+		// Moves to next pixel to fill
+		if (val > 0) {
+			do Piece.drawRow(i, val);
+		}
+
+		return;
+	}
+
+	method void printRows() {
+		var int i;
+		while (i < 4) {
+			do Output.printInt(rows[i]);
+			let i = i + 1;
+		}
+		return;
+	}
+
+}

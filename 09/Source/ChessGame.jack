@@ -1,0 +1,42 @@
+class ChessGame {
+	field int turn; // Sets player's turn: White(0) or black(1)
+	field bool gameOver; // Sets whether or not game is over
+	// field string result; // Stores result: "White won", "Black won", or "Draw"
+	field Board board;
+
+	constructor ChessGame new() {
+		// Sets turn to white, creates default board
+		// Sets gameOver to false, result to "xxx"
+		let turn = 0;
+		let gameOver = false;
+		// let result = "xxx";
+		let board = Board.new(Board.default());
+		return this;
+	}
+
+	method void dispose() {
+		do turn.dispose();
+		do gameOver.dispose();
+		do board.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+
+	method void run() {
+		// Game loop
+		while (gameOver = 1) {
+			var Move move;
+			let move = Move.new("xxx") // Setting to a random value so validition can run
+			while (~(Move.valid_move(move))) {
+				let move = Move.new(Keyboard.readLine("What is your move? "));
+			}
+			let board = Board.addMove(move);
+			do Draw.draw(board);
+			let turn = ~turn;
+			if (End.end(end.new(board))) {
+				gameOver = 0;
+			}
+		}
+		return;
+	}
+}

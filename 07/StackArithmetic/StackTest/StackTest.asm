@@ -1,0 +1,375 @@
+@17
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@17
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK1)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL1
+        D;JEQ
+        @END1
+        0;JMP
+(EQUAL1)
+        @SP
+        A=M-1
+        M=-1
+(END1)
+        @SP
+        A=M
+@17
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@16
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK2)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL2
+        D;JEQ
+        @END2
+        0;JMP
+(EQUAL2)
+        @SP
+        A=M-1
+        M=-1
+(END2)
+        @SP
+        A=M
+@16
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@17
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK3)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL3
+        D;JEQ
+        @END3
+        0;JMP
+(EQUAL3)
+        @SP
+        A=M-1
+        M=-1
+(END3)
+        @SP
+        A=M
+@892
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@891
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK4)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL4
+        D;JLT
+        @END4
+        0;JMP
+(EQUAL4)
+        @SP
+        A=M-1
+        M=-1
+(END4)
+        @SP
+        A=M
+@891
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@892
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK5)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL5
+        D;JLT
+        @END5
+        0;JMP
+(EQUAL5)
+        @SP
+        A=M-1
+        M=-1
+(END5)
+        @SP
+        A=M
+@891
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@891
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK6)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL6
+        D;JLT
+        @END6
+        0;JMP
+(EQUAL6)
+        @SP
+        A=M-1
+        M=-1
+(END6)
+        @SP
+        A=M
+@32767
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@32766
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK7)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL7
+        D;JGT
+        @END7
+        0;JMP
+(EQUAL7)
+        @SP
+        A=M-1
+        M=-1
+(END7)
+        @SP
+        A=M
+@32766
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@32767
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK8)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL8
+        D;JGT
+        @END8
+        0;JMP
+(EQUAL8)
+        @SP
+        A=M-1
+        M=-1
+(END8)
+        @SP
+        A=M
+@32766
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@32766
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+(CHECK9)
+        @SP
+        A=M-1
+        D=M
+        A=A-1
+        D=M-D
+        M=0
+        @SP
+        M=M-1
+        @EQUAL9
+        D;JGT
+        @END9
+        0;JMP
+(EQUAL9)
+        @SP
+        A=M-1
+        M=-1
+(END9)
+        @SP
+        A=M
+@57
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@31
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@53
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@SP
+A=M-1
+D=M
+A=A-1
+M=M+D
+@SP
+M=M-1
+@112
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@SP
+A=M-1
+D=M
+A=A-1
+M=M-D
+@SP
+M=M-1
+@SP
+A=M-1
+M=-M
+@SP
+A=M-1
+D=M
+A=A-1
+M=M&D
+@SP
+M=M-1
+@82
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+@SP
+A=M-1
+D=M
+A=A-1
+M=M|D
+@SP
+M=M-1
+@SP
+A=M-1
+M=!M

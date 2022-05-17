@@ -1,0 +1,54 @@
+// Chess app
+
+class Main {
+	function void main() {
+		do EnteringMove.main();
+		return;
+	}
+
+	
+	// queen
+	//function void draw(int location) {
+	//	let memAddress = 16384+location;
+	//	do Memory.poke(memAddress+0, 0);
+	//	do Memory.poke(memAddress+32, 0);
+	//	do Memory.poke(memAddress+64, 0);
+	//	do Memory.poke(memAddress+96, 18569);
+	//	do Memory.poke(memAddress+128, 28123);
+	//	do Memory.poke(memAddress+160, 18569);
+	//	do Memory.poke(memAddress+192, 27803);
+	//	do Memory.poke(memAddress+224, 14006);
+	//	do Memory.poke(memAddress+256, 8188);
+	//	do Memory.poke(memAddress+288, 4080);
+	//	do Memory.poke(memAddress+320, 8184);
+	//	do Memory.poke(memAddress+352, 8184);
+	//	do Memory.poke(memAddress+384, 8184);
+	//	do Memory.poke(memAddress+416, 8184);
+	//	do Memory.poke(memAddress+448, 0);
+	//	do Memory.poke(memAddress+480, 0);
+	//	return;
+	//}
+//
+	//// queen better
+	//	function void draw(int location) {
+	//	let memAddress = 16384+location;
+	//	do Memory.poke(memAddress+0, 0);
+	//	do Memory.poke(memAddress+32, 8194);
+	//	do Memory.poke(memAddress+64, 9362);
+	//	do Memory.poke(memAddress+96, 9682);
+	//	do Memory.poke(memAddress+128, 14326);
+	//	do Memory.poke(memAddress+160, 7148);
+	//	do Memory.poke(memAddress+192, 4088);
+	//	do Memory.poke(memAddress+224, 992);
+	//	do Memory.poke(memAddress+256, 448);
+	//	do Memory.poke(memAddress+288, 448);
+	//	do Memory.poke(memAddress+320, 448);
+	//	do Memory.poke(memAddress+352, 448);
+	//	do Memory.poke(memAddress+384, 992);
+	//	do Memory.poke(memAddress+416, 992);
+	//	do Memory.poke(memAddress+448, 992);
+	//	do Memory.poke(memAddress+480, 0);
+	//	return;
+	//}
+
+}

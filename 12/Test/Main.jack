@@ -1,0 +1,33 @@
+class Main {
+	function void main () {
+		var Array x;
+		// do Output.drawChar(51);
+		do Main.drawChar(51);
+		return;
+	}
+
+	function void drawChar(char c) {
+		var Array charMap;
+		var int i;
+		var int charMapI;
+		var int j;
+		var int bit;
+		
+		let charMap = Output.getMap(c);
+		while (i < 12) {
+			let charMapI = charMap[i];
+			let j = 0;
+			while (j < 16) {
+				let bit = Math.bit(charMapI, j);
+				if (bit) {
+					do Screen.setColor(true);
+					do Screen.drawPixel(100 + j, 100 + i);
+				}
+				let j = j + 1;
+			}
+			let i = i + 1;
+		}
+
+		return;
+	}
+}

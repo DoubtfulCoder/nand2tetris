@@ -1,0 +1,18 @@
+/** Implements bishop piece */
+class Bishop {
+	function Array PossibleMoves(Board board, int square) {
+		// Returns all squares a bishop can move to given a board
+		var Array possibleMoves;
+		var bool edgeReached;
+		var bool pieceReached;
+		var squareIter;
+		let edgeReached = false;
+		let pieceReached = false;
+		let squareIter = square;
+		let possibleMoves = Array.new(13); // Maximum possible moves
+		while (Move.edge(squareIter) = false & Move.squareAt(board, squareIter) = false) {
+			// Goes diagonally up to the right
+			let squareIter = squareIter + 9; // Diagonal move up
+		}
+	}
+}

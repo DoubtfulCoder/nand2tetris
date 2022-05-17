@@ -1,0 +1,151 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Math.jack
+
+/**
+ * A library of commonly used mathematical functions.
+ * Note: Jack compilers implement multiplication and division using OS method calls.
+ */
+class Math {
+    static Array twoToThe;
+
+    /** Initializes the library. */
+    function void init() {
+        // Creates an array of powers of 2 from 2^0 to 2^15
+        var int i;
+        var int twoCounter;
+        let twoToThe = Array.new(16);
+        let twoCounter = 1;
+        let i = 0;
+        while (i < 16) {
+            let twoToThe[i] = twoCounter;
+            let twoCounter = twoCounter + twoCounter;
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    /** Returns the absolute value of x. */
+    function int abs(int x) {
+        if (x < 0) {
+            return -x;
+        } else {
+            return x;
+        }
+    }
+
+    /** Returns the product of x and y. 
+     *  When a Jack compiler detects the multiplication operator '*' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x*y and multiply(x,y) return the same value.
+     */
+    function int multiply(int x, int y) {
+        var int sum; // accumulator sum
+        var int i;
+        let sum = 0;
+        let i = 0;
+
+        // Loops through digits of x
+        while (i < 16) {
+            // If y[i] is 1, then it adds it to the sum
+            if (Math.bit(y, i)) {
+                let sum = sum + x;
+            }
+            let x = x + x; // shifts x
+            let i = i + 1;
+        }
+
+        return sum;
+    }
+
+    /** Returns the integer part of x/y.
+     *  When a Jack compiler detects the multiplication operator '/' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x/y and divide(x,y) return the same value.
+     */
+    function int divide(int x, int y) {
+        var boolean sign; // saves sign for later
+        var int q;
+        let sign = true;
+        
+        if (x < 0) {
+            let sign = false; // negative sign
+            let x = Math.abs(x);
+        }
+        if (y < 0) {
+            let sign = ~sign; // negates since neg*neg = pos, and pos*neg=neg 
+            let y = Math.abs(y);
+        }
+
+        if ((y > x) | (y < 0)) {
+            // Handles larger divisor and potential overflow
+            return 0;
+        } 
+        let q = Math.divide(x, y + y);
+
+        if ((x - (2 * q * y)) < y) {
+            let q = q + q;
+        } else {
+            let q = q + q + 1;
+        }
+
+        if (~sign) {
+            return -q; // negative sign
+        } else {
+            return q; // positive sign
+        }
+    }
+
+    /** Returns the integer part of the square root of x. */
+    function int sqrt(int x) {
+        var int y;
+        var int i;
+        var int calc;
+        let y = 0;
+        let i = 7;
+
+        while (~(i < 0)) {
+            let calc = (y + twoToThe[i]) * (y + twoToThe[i]);
+            if ((calc > 0) & (~(calc > x))) {
+                let y = y + twoToThe[i];
+            }
+            let i = i - 1;
+        }
+
+        return y;
+    }
+
+    /** Returns the greater number. */
+    function int max(int a, int b) {
+        if (a > b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
+    /** Returns the smaller number. */
+    function int min(int a, int b) {
+        if (a < b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
+    /** Returns ith bit of x (true or false) */
+    function boolean bit(int x, int i) {
+        // Accesses the ith value of the array twoToThe (twoToThe[i])
+        // Does a logical AND with twoToThe[i] and x 
+        // If result is greater than 0, returns true (equivalent of accesing ith bit)
+        var int twoToTheI;
+        let twoToTheI = twoToThe[i];
+        if (~((twoToTheI & x) = 0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

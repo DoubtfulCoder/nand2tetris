@@ -1,0 +1,4 @@
+/** Checks if a move is legal */
+class Legal {
+	
+}

@@ -1,0 +1,91 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory {
+    static Array ram;
+    // static Array heap;
+    // static int freeList;
+    static Array freeList;
+    static int freeListPointer;
+    static int freeListSize;
+
+    /** Initializes the class. */
+    function void init() {
+        let ram = 0; // ingenious hack to access ram
+        // let heap = 2048;
+        // let freeList = 2048;
+        // let heap[0] = 0; // next value 
+        // let heap[1] = 14334; // length value
+        let freeList = 2048;
+        let freeListPointer = 0; // next value 
+        let freeListSize = 14334; // length value
+        let freeList[0] = freeListPointer; // next value 
+        let freeList[1] = freeListSize; // length value
+        return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+        return ram[address];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+        let ram[address] = value;
+        return;
+    }
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) {
+        var int block; // base return address
+        var int blockSize;
+        // var int oldFreeListSize;
+
+        // let oldFreeListSize = Memory.peek(freeList + 1); // saves old size
+        // do Output.printInt(freeList);
+        // do Output.println();
+        let size = size + 2; // 2 extra for overhead fields
+        let block = freeList; // first available segment in freeList
+        let blockSize = freeListSize;
+        // let blockSize = Memory.peek(freeList + 1);
+        
+        // Continously checks sizes of next segment until first fit
+        while (blockSize < size) {
+            // let block = Memory.peek(freeList); // moves to next available address
+            let block = freeListPointer; // moves to next available address
+            let blockSize = Memory.peek(block + 1);
+        }
+
+        // do Memory.poke(block + 1, block + size); // sets pointer to next block
+        do Memory.poke(block, block + size); // sets pointer to next block
+        do Memory.poke(block + 1, size - 2); // sets size of block block
+        let freeList = freeList + size; // updates free list
+        // do Output.printInt(freeList);
+        // do Output.println();
+        // do Memory.poke(freeList + 1, oldFreeListSize - size); // updates free list size
+        // do Memory.poke(freeList, freeList + 2);
+        let freeListPointer = freeList + 2;
+        let freeListSize = freeListSize - size;
+        let freeList[0] = freeListPointer;
+        let freeList[1] = freeListSize;
+
+        return block + 2; // moves 2 extra for overhead
+    }
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+        do Memory.poke(o, freeListPointer); // array points to end of freeList
+        let freeListPointer = o - 2; // freeList points to array
+        let freeList[0] = freeListPointer;
+        return;
+    }    
+}
